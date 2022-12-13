@@ -4,17 +4,23 @@ import java.io.StringReader
 
 class Math {
 
-    fun add(a: String, b: String): String {
+
+
+    fun add(a:String,b:String):String{
         var c = ""
-        if (a.contains("-") || b.contains("-")) {
-            c = "Нельзя закидывать отрицательное"
-        } else if (a.contains(".") || b.contains(".")) {
+
+        if(a.contains(".") || b.contains(".")) {
             var num1 = a.toDouble()
             var num2 = b.toDouble()
             c = (num1 + num2).toString()
-        } else if (!isNumeric(a) || !isNumeric(b)) {
+
+        }else if ( a.toInt() < 0 || b.toInt() < 0){
+            var num1 = a.toInt()
+            var num2 = b.toInt()
+            c = (num1 + num2).toString()
+        }else if (!isNumeric(a) || !isNumeric(b)){
             c = "Нельзя вводить буквы"
-        } else {
+        }else{
             var num1 = a.toInt()
             var num2 = b.toInt()
             c = (num1 + num2).toString()
@@ -22,25 +28,17 @@ class Math {
         return c
     }
 
-    fun minus(a: String, b: String): String {
+    fun divide(a:String,b:String):String{
         var c = ""
-        var num1 = a.toInt()
-        var num2 = b.toInt()
-        c = (num1 - num2).toString()
-        return c
-    }
-
-    fun isNumeric(str: String) = str.all { it in '0'..'9' }
-
-    fun divide(a: String, b: String): String {
-        var c = ""
-        if (b == "0") {
-            c = "Делить на ноль нельзя"
-        } else {
+        if( a.toInt() == 0 || b.toInt() == 0) {
+            c = "самый умный?"
+        }else{
             var num1 = a.toInt()
             var num2 = b.toInt()
             c = (num1 / num2).toString()
         }
         return c
     }
+
+    fun isNumeric(str: String) = str.all { it in '0'..'9' }
 }

@@ -2,6 +2,7 @@ package com.example.test48
 
 import junit.framework.Assert.assertEquals
 import org.junit.After
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 
@@ -15,42 +16,37 @@ class MathTest {
     }
 
     @Test
-    fun SimpleAdd() {
-        assertEquals("4", math?.add("2", "2"))
+    fun simpleAdd() {
+        Assert.assertEquals("4", math?.add("2", "2"))
     }
 
     @Test
-    fun symbolAdd() {
-        assertEquals("Нельзя вводить буквы", math?.add("2aa#", "2"))
+    fun symbolAdd(){
+        Assert.assertEquals("Нельзя вводить буквы", math?.add("2aa", "2"))
     }
 
     @Test
-    fun doubleAdd() {
-        assertEquals("4.4", math?.add("2.4", "2.0"))
+    fun doubleAdd(){
+        Assert.assertEquals("4.4",math?.add("2.4","2.0"))
     }
 
     @Test
-    fun negativeMinusAdd() {
-        assertEquals("Нельзя закидывать отрицательное", math?.add("-2", "2"))
-    }
-
-    @Test
-    fun minusAdd() {
-        assertEquals("2", math?.minus("4", "2"))
+    fun minusAdd(){
+        Assert.assertEquals("0",math?.add("-2","2"))
     }
 
     @Test
     fun simpleDivide(){
-        assertEquals("2",math?.divide("4","2"))
+        Assert.assertEquals("2",math?.divide("4","2"))
     }
 
     @Test
     fun zeroDivide(){
-        assertEquals("Делить на ноль нельзя",math?.divide("4","0"))
+        Assert.assertEquals("2",math?.divide("4","0"))
     }
 
     @After
-    fun detach() {
+    fun detach(){
         math = null
     }
 }
